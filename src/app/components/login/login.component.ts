@@ -10,6 +10,9 @@ import { LoginService } from '../../services/firebase/login.service';
 })
 export class LoginComponent implements OnInit {
 
+  texto: any;
+  condicional = false;
+
   /* formulario login */
   public loginForm = new FormGroup({
     email: new FormControl(''),
@@ -26,9 +29,15 @@ export class LoginComponent implements OnInit {
   onLogin() {
     console.log('Login', this.loginForm.value);
     this.loginService.login( this.loginForm.value.email, this.loginForm.value.password).then( resp => {
-      console.log('resp promise compo', resp);
+      if (resp !== undefined ) {
+        console.log('resp promise compo', resp);
+        this.texto = resp.message;
+        this.condicional = true;
+      } else {
+        this.condicional = false;
+      }
     }).catch( error => {
-      console.log('promise', error);
+      console.error('promise', error);
     });
   }
 

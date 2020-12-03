@@ -18,10 +18,11 @@ export class LoginService {
     try {
       const respuesta = await this.angularFireAuth.auth.signInWithEmailAndPassword( email, password );
       console.log('auth -->', respuesta);
-      return respuesta.user.uid;
+      /* return respuesta.user.uid; */
       /* this.errorLogin = false; */
     } catch (error) {
       console.error('auth -->', error.message);
+      return error;
       /* this.errorLogin = true;
       this.messageError = error.message; */
     }
