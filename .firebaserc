@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "cordsupply": {
+      "hosting": {
+        "proyecto-pame-arteaga": [
+          "cordsupply"
+        ]
+      }
+    }
+  }
+}

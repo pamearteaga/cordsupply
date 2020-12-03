@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 mx-auto mt-5">
+            <h1 class="mb-5">LOGIN</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                <!-- <div *ngIf="errorLogin" class="alert alert-danger">
+                <h1>Error</h1>
+                <p>{{ messageError }}</p>
+            </div> -->
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" formControlName="email" placeholder="Email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" formControlName="password" placeholder="Password">
+                </div>
+                <!-- <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div> -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <button type="submit" (click)="onLogout()" class="btn btn-secondary">Log out</button>
+        </div>
+    </div>
+</div>

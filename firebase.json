@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "proyecto-pame-arteaga",
+      "public": "dist/proyecto-pame-arteaga",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
