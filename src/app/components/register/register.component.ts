@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RegisterService } from '../../services/firebase/register.service';
 import { FirestoreService } from '../../services/firebase/firestore.service';
 import { User } from '../../interfaces/user';
@@ -12,11 +12,22 @@ import { User } from '../../interfaces/user';
 })
 export class RegisterComponent implements OnInit {
 
+  get email() {
+    return this.registerForm.get('email');
+  }
+  get password() {
+    return this.registerForm.get('password');
+  }
+
+  public menberships: any[] = ['basic', 'medium', 'advanced'];
+
    /* formulario register*/
    public registerForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-    name: new FormControl('')
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    name: new FormControl(''),
+    menberships: new FormControl(this.menberships[0]),
+    newsletter: new FormControl(false)
   });
 
   constructor(

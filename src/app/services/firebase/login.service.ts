@@ -34,4 +34,14 @@ export class LoginService {
     } catch (error) {
     }
   }
+
+ async currentUser() {
+    try {
+      const currentUser = this.angularFireAuth.auth.currentUser;
+      return currentUser;
+    } catch (error) {
+      return error;
+    }
+  }
+
 }

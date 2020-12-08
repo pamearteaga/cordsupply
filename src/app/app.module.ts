@@ -22,6 +22,9 @@ import { NewCordComponent } from './components/new-cord/new-cord.component';
 /* formularios */
 import { ReactiveFormsModule } from '@angular/forms';
 
+/* guards */
+import { LoggedGuard } from './guards/logged.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +44,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AngularFirestoreModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [LoggedGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
