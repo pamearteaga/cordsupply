@@ -1,1 +1,36 @@
-<p>cords works!</p>
+<div class="container">
+    <h1 class="my-4">Listado de hilos</h1>
+    <!--agregar hilo-->
+    <div class="row mb-5">
+        <div class="col text-right">
+            <button class="btn btn-success" routerLink="/supply/cord/nuevo">
+            <span class="material-icons align-middle">add</span>
+                Agregar
+        </button>
+        </div>
+    </div>
+
+    <!--hilos-->
+    <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3">
+        <div class="col mb-4" *ngFor="let cord of cords; let i = index">
+            <div class="card">
+                <div class="card-img-top" [ngStyle]="{'background-color': cord.color}">
+                    <img src="./../../../assets/img/linha.jpg" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ cord.codigo }} </h5>
+                    <p class="card-text">Cantidad: {{ cord.cantidad }} mts</p>
+                    <p class="card-text">Marca: {{ cord.marca }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-warning text-center mt-3">
+        <h4>No hay registros</h4>
+    </div>
+    <div class="text-center mt-3">
+        <h2>CARGANDO...</h2>
+    </div>
+
+
+</div>

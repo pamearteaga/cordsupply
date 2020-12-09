@@ -10,6 +10,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
+/* HttpClient*/
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 /* componentes */
 import { LoginComponent } from './components/login/login.component';
 import { SupplyComponent } from './components/supply/supply.component';
@@ -20,10 +23,11 @@ import { CordComponent } from './components/cord/cord.component';
 import { NewCordComponent } from './components/new-cord/new-cord.component';
 
 /* formularios */
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 /* guards */
 import { LoggedGuard } from './guards/logged.guard';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,8 @@ import { LoggedGuard } from './guards/logged.guard';
     AngularFireAuthModule,
     AngularFirestoreModule,
     ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [LoggedGuard],
   bootstrap: [AppComponent]

@@ -1,1 +1,57 @@
-<p>cord works!</p>
+<h2 class="mb-5">Código <strong>Código hilo</strong></h2>
+
+<!--back-->
+<div class="row mb-5">
+    <div class="col text-right">
+        <button class="btn btn-danger" routerLink="/supply/cords">
+        <span class="material-icons align-middle">keyboard_arrow_left</span>
+            Volver
+    </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div *ngIf="add == true" class="alert alert-success">
+            <h5>El item se agregó correctamente</h5>
+        </div>
+        <div *ngIf="update == true" class="alert alert-info">
+            <h5>El item se actualizó correctamente</h5>
+        </div>
+        <form (ngSubmit)="saveCord(f)" #f="ngForm">
+            <!--id-->
+            <div class="form-group">
+                <input class="form-control" type="text" [(ngModel)]="cord.id" name="id" placeholder="id" disabled="disabled">
+            </div>
+            <!--codigo-->
+            <div class="form-group">
+                <label for="codigo">Código hilo</label>
+                <input class="form-control" type="text" [(ngModel)]="cord.codigo" name="codigo" placeholder="Código" required>
+            </div>
+            <!--color-->
+            <div class="form-group">
+                <label for="color">Color</label>
+                <input class="form-control" type="text" [(ngModel)]="cord.color" name="color" placeholder="Ejem: #123456" required>
+            </div>
+            <!--cantidad-->
+            <div class="form-group">
+                <label for="color">Cantidad</label>
+                <input class="form-control" type="text" [(ngModel)]="cord.cantidad" name="cantidad" placeholder="Ejem: 100" required>
+                <p>mts</p>
+            </div>
+            <!--marca-->
+            <div class="form-group">
+                <label for="marca">Marca</label>
+                <select class="form-control" [(ngModel)]="cord.marca" name="marca" required>
+                    <option *ngFor="let marca of marcas" [value]="marca"> {{marca}} </option>
+                </select>
+            </div>
+            <div class="form-group mt-5">
+                <button class="btn btn-primary" type="submit">
+                    <span class="material-icons align-middle">add</span>
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

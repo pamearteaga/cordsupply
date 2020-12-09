@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CordsService } from '../../services/httpclient/cords.service';
+import { CordModel } from '../../models/cord.model';
+
 
 @Component({
   selector: 'app-cords',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CordsComponent implements OnInit {
 
-  constructor() { }
+  cords: CordModel[] = [];
+
+  constructor(
+    private cordsService: CordsService
+  ) { }
 
   ngOnInit() {
+    this.cordsService.getCords().subscribe( resp => {
+      console.log(resp);
+      this.cords = resp;
+    });
   }
+
+ 
 
 }
