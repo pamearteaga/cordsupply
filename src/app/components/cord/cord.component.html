@@ -12,10 +12,10 @@
 
 <div class="row">
     <div class="col">
-        <div *ngIf="add == true" class="alert alert-success">
+        <div *ngIf="add" class="alert alert-success">
             <h5>El item se agregó correctamente</h5>
         </div>
-        <div *ngIf="update == true" class="alert alert-info">
+        <div *ngIf="update" class="alert alert-info">
             <h5>El item se actualizó correctamente</h5>
         </div>
         <form (ngSubmit)="saveCord(f)" #f="ngForm">

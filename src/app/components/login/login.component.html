@@ -21,9 +21,7 @@
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div> -->
-                <ng-container *ngIf="condicional == true">
-                    <p style="color: red;">Error: {{ texto }}</p>
-                </ng-container>
+                <p *ngIf="condicional" style="color: red;">Error: {{ texto }}</p>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

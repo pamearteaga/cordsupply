@@ -11,11 +11,15 @@
     </div>
 
     <!--hilos-->
-    <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3">
+    <div *ngIf="!download && cords.length > 0" class="row row-cols-1 row-cols-lg-4 row-cols-md-3">
         <div class="col mb-4" *ngFor="let cord of cords; let i = index">
             <div class="card">
                 <div class="card-img-top" [ngStyle]="{'background-color': cord.color}">
-                    <img src="./../../../assets/img/linha.jpg" class="card-img-top" alt="...">
+                    <div class="tools">
+                        <a [routerLink]="['/supply/cord/', cord.id]" class="badge badge-pill badge-info mr-2"><span class="material-icons">edit</span></a>
+                        <a href="#" (click)="deleteCord(cord, i)" class="badge badge-pill badge-danger"><span class="material-icons">delete</span></a>
+                    </div>
+                    <img src="./../../../assets/img/linha.jpg" class="card-img-top">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"> {{ cord.codigo }} </h5>
@@ -25,10 +29,10 @@
             </div>
         </div>
     </div>
-    <div class="alert alert-warning text-center mt-3">
+    <div *ngIf="!download && cords.length === 0" class="alert alert-warning text-center mt-3">
         <h4>No hay registros</h4>
     </div>
-    <div class="text-center mt-3">
+    <div *ngIf="download" class="text-center mt-3">
         <h2>CARGANDO...</h2>
     </div>
 

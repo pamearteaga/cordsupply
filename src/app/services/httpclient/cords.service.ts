@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CordModel } from '../../models/cord.model';
-import { map } from 'rxjs/operators';
+import { map, delay } from 'rxjs/operators';
 
 
 @Injectable({
@@ -45,10 +45,19 @@ export class CordsService {
     return this.httpClient.put(`${this.url}/cords/${cord.id}.json`, cordTemp);
   }
 
+  deleteCord( id: string ) {
+    return this.httpClient.delete(`${this.url}/cords/${id}.json`)
+  }
+
+  getCord( id: string ) {
+    return this.httpClient.get(`${this.url}/cords/${id}.json`)
+  }
+
   getCords() {
     return this.httpClient.get(`${this.url}/cords.json`)
       .pipe(
-        map(this.arreglo)
+        map(this.arreglo),
+        delay(1500)
       );
   }
 

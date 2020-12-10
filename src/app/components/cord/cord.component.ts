@@ -3,6 +3,7 @@ import { CordModel } from '../../models/cord.model';
 import { NgForm } from '@angular/forms';
 import { CordsService } from '../../services/httpclient/cords.service';
 import { map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cord',
@@ -17,10 +18,20 @@ export class CordComponent implements OnInit {
   update = false;
 
   constructor(
-    private cordsService: CordsService
+    private cordsService: CordsService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log(id);
+
+    if(id !== 'nuevo') {
+      this.cordsService.getCord( id ).subscribe( (resp: CordModel) => {
+        this.cord = resp;
+        this.cord.id = id;
+      })
+    }
   }
 
   saveCord(form: NgForm) {

@@ -11,17 +11,29 @@ import { CordModel } from '../../models/cord.model';
 export class CordsComponent implements OnInit {
 
   cords: CordModel[] = [];
+  download = false;
 
   constructor(
     private cordsService: CordsService
   ) { }
 
   ngOnInit() {
+    this.download = true;
     this.cordsService.getCords().subscribe( resp => {
-      console.log(resp);
       this.cords = resp;
+      this.download = false;
+      if( resp.length === 0 ){
+        this.download = false;
+      }
     });
   }
+
+  deleteCord( cord: CordModel, i: number ) {
+    this.cords.splice(i, 1);
+    this.cordsService.deleteCord( cord.id ).subscribe();
+  }
+
+
 
  
 
