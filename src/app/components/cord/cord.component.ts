@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CordModel } from '../../models/cord.model';
 import { NgForm } from '@angular/forms';
 import { CordsService } from '../../services/httpclient/cords.service';
-import { map } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { ColorEvent } from 'ngx-color';
 
 @Component({
   selector: 'app-cord',
@@ -16,6 +16,7 @@ export class CordComponent implements OnInit {
   cord: CordModel  = new CordModel();
   add = false;
   update = false;
+  colorVal: string = '';
 
   constructor(
     private cordsService: CordsService,
@@ -34,10 +35,31 @@ export class CordComponent implements OnInit {
     }
   }
 
+  handleChange( $event: ColorEvent) {
+    this.colorVal = $event.color.hex;
+    console.log(this.colorVal);
+    // color = {
+    //   hex: '#333',
+    //   rgb: {
+    //     r: 51,
+    //     g: 51,
+    //     b: 51,
+    //     a: 1,
+    //   },
+    //   hsl: {
+    //     h: 0,
+    //     s: 0,
+    //     l: .20,
+    //     a: 1,
+    //   },
+    // }
+  }
+  
+
   saveCord(form: NgForm) {
     if (form.invalid) {
       console.error('campo requerido');
-      return;
+      return; 
     }
 
     if (this.cord.id) {
@@ -51,7 +73,10 @@ export class CordComponent implements OnInit {
         console.log(resp);
         this.add = true;
         this.update = false;
-        this.cord = resp;
+        resp.color = this.colorVal;
+       /*  this.cord = resp; */
+        /* this.cord.color = this.colorVal; */
+        this.colorVal = '';
       });
 
     }

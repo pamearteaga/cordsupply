@@ -19,19 +19,16 @@
             <h5>El item se actualizó correctamente</h5>
         </div>
         <form (ngSubmit)="saveCord(f)" #f="ngForm">
-            <!--id-->
-            <div class="form-group">
-                <input class="form-control" type="text" [(ngModel)]="cord.id" name="id" placeholder="id" disabled="disabled">
-            </div>
             <!--codigo-->
             <div class="form-group">
                 <label for="codigo">Código hilo</label>
                 <input class="form-control" type="text" [(ngModel)]="cord.codigo" name="codigo" placeholder="Código" required>
+
             </div>
             <!--color-->
             <div class="form-group">
                 <label for="color">Color</label>
-                <input class="form-control" type="text" [(ngModel)]="cord.color" name="color" placeholder="Ejem: #123456" required>
+                <input class="form-control" type="color" [(ngModel)]="cord.color" name="color" value="#000000" required>
             </div>
             <!--cantidad-->
             <div class="form-group">
