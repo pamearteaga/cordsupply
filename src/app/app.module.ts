@@ -27,10 +27,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 /* guards */
 import { LoggedGuard } from './guards/logged.guard';
-import { from } from 'rxjs';
-
-/* colorpicker */
-import { ColorChromeModule } from 'ngx-color/chrome';
 
 
 @NgModule({
@@ -52,8 +48,7 @@ import { ColorChromeModule } from 'ngx-color/chrome';
     AngularFirestoreModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,
-    ColorChromeModule
+    HttpClientModule
   ],
   providers: [LoggedGuard],
   bootstrap: [AppComponent]

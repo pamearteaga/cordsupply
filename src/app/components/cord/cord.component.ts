@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CordModel } from '../../models/cord.model';
-import { NgForm } from '@angular/forms';
+import { NgForm,FormControl ,FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { CordsService } from '../../services/httpclient/cords.service';
 import { ActivatedRoute } from '@angular/router';
-import { ColorEvent } from 'ngx-color';
+import { Cord } from '../../interfaces/cord';
 
 @Component({
   selector: 'app-cord',
@@ -12,11 +12,32 @@ import { ColorEvent } from 'ngx-color';
 })
 export class CordComponent implements OnInit {
 
+  get codigo() {
+    return this.formCord.get('codigo');
+  }
+  get color() {
+    return this.formCord.get('color');
+  }
+  get cantidad() {
+    return this.formCord.get('cantidad');
+  }
+  get marca() {
+    return this.formCord.get('marca');
+  }
+
+  public formCord = new FormGroup({
+    codigo: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    color: new FormControl('', Validators.required),
+    cantidad: new FormControl('', Validators.required),
+    marca: new FormControl('', Validators.required)
+  });
+
+
   marcas: any[] = ['Linhasita', 'Sethanyl', 'Linhanyl', 'Otro'];
-  cord: CordModel  = new CordModel();
+  /* cord: CordModel  = new CordModel(); */
   add = false;
   update = false;
-  colorVal: string = '';
+ 
 
   constructor(
     private cordsService: CordsService,
@@ -28,40 +49,42 @@ export class CordComponent implements OnInit {
     console.log(id);
 
     if(id !== 'nuevo') {
-      this.cordsService.getCord( id ).subscribe( (resp: CordModel) => {
-        this.cord = resp;
-        this.cord.id = id;
+      this.cordsService.getCord(id).subscribe( resp => {
+        console.log(resp);
+        resp = this.formCord;
+        /* this.formCord.id = id; */
       })
     }
   }
 
-  handleChange( $event: ColorEvent) {
-    this.colorVal = $event.color.hex;
-    console.log(this.colorVal);
-    // color = {
-    //   hex: '#333',
-    //   rgb: {
-    //     r: 51,
-    //     g: 51,
-    //     b: 51,
-    //     a: 1,
-    //   },
-    //   hsl: {
-    //     h: 0,
-    //     s: 0,
-    //     l: .20,
-    //     a: 1,
-    //   },
-    // }
-  }
   
+  saveCord() {
+    const cord = this.formCord.value;
+    if(cord.id) {
+      this.cordsService.updateCord(cord).subscribe( resp => {
+        console.log(resp);
+        this.add = false;
+        this.update = true;
+      });
+    } else {
+      this.cordsService.newCord(cord).subscribe( resp => {
+        console.log(resp);
+        this.add = true;
+        this.update = false;
+      });
 
-  saveCord(form: NgForm) {
+    }
+
+
+
+
+  }
+
+  /* saveCord() {
     if (form.invalid) {
       console.error('campo requerido');
       return; 
-    }
-
+    } 
     if (this.cord.id) {
       this.cordsService.updateCord(this.cord).subscribe( resp => {
         console.log(resp);
@@ -73,14 +96,11 @@ export class CordComponent implements OnInit {
         console.log(resp);
         this.add = true;
         this.update = false;
-        resp.color = this.colorVal;
-       /*  this.cord = resp; */
-        /* this.cord.color = this.colorVal; */
-        this.colorVal = '';
+        this.cord = resp;
       });
 
     }
 
-  }
+  } */
 
-}
+} //end
