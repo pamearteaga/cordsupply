@@ -1,2 +1,90 @@
 <app-header></app-header>
-<p>new-cord works!</p>
+<h2 class="mb-5">Código <strong>Código hilo</strong></h2>
+
+<!--back-->
+<div class="row mb-5">
+    <div class="col text-right">
+        <button class="btn btn-danger" routerLink="/supply/cords">
+        <span class="material-icons align-middle">keyboard_arrow_left</span>
+            Volver
+    </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div *ngIf="add" class="alert alert-success">
+            <h5>El item se agregó correctamente</h5>
+        </div>
+        <div *ngIf="update" class="alert alert-info">
+            <h5>El item se actualizó correctamente</h5>
+        </div>
+        <!-- <form  autocomplete="off"  (ngSubmit)="saveCord(form)" #form="ngForm"> -->
+        <form autocomplete="off" [formGroup]="formCord" (ngSubmit)="saveCord()">
+            <!--codigo-->
+            <div class="form-group">
+                <label for="codigo">Código hilo</label>
+                <input class="form-control" formControlName="codigo" type="text" name="codigo" placeholder="Código" [value]="formCord.value.codigo">
+                <small class="form-text text-danger">Ingresa mínimo 4 caracteres</small>
+            </div>
+            <!--color-->
+            <div class="form-group">
+                <label for="color">Color</label>
+                <input class="form-control" formControlName="color" type="color" name="color" value="#000000">
+            </div>
+            <!--cantidad-->
+            <div class="form-group">
+                <label for="color">Cantidad</label>
+                <input class="form-control" formControlName="cantidad" type="text" name="cantidad" placeholder="Ejem: 100">
+                <p>mts</p>
+            </div>
+            <!--marca-->
+            <div class="form-group">
+                <label for="marca">Marca</label>
+                <select class="form-control" formControlName="marca" name="marca">
+                    <option *ngFor="let marca of marcas" [value]="marca"> {{marca}} </option>
+                </select>
+            </div>
+            <div class="form-group mt-5">
+                <button class="btn btn-primary" type="submit">
+                    <span class="material-icons align-middle">add</span>
+                    Guardar
+                </button>
+            </div>
+        </form>
+
+
+        <!-- <form (ngSubmit)="saveCord(form)" #form="ngForm">
+            
+            <div class="form-group">
+                <label for="codigo">Código hilo</label>
+                <input class="form-control" type="text" [class.is-invalid]="codigo.invalid && codigo.touched" #codigo="ngModel" [(ngModel)]="cord.codigo" name="codigo" placeholder="Código" minlength="3" required>
+                <small class="form-text text-danger" *ngIf="codigo.invalid && codigo.touched">Mínimo 3 caracteres</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="color">Color</label>
+                <input class="form-control" type="color" [(ngModel)]="cord.color" name="color" value="#000000" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="color">Cantidad</label>
+                <input class="form-control" type="text" [(ngModel)]="cord.cantidad" name="cantidad" placeholder="Ejem: 100" required>
+                <p>mts</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="marca">Marca</label>
+                <select class="form-control" [(ngModel)]="cord.marca" name="marca" required>
+                    <option *ngFor="let marca of marcas" [value]="marca"> {{marca}} </option>
+                </select>
+            </div>
+            <div class="form-group mt-5">
+                <button class="btn btn-primary" type="submit">
+                    <span class="material-icons align-middle">add</span>
+                    Guardar
+                </button>
+            </div>
+        </form> -->
+    </div>
+</div>
