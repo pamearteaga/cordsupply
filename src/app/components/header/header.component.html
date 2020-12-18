@@ -7,30 +7,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item ml-3" routerLinkActive="active">
-                <a class="nav-link" routerLink="/register"><span class="material-icons align-middle mr-1">
-                    add_circle_outline
-                    </span>Register</a>
+                <button type="submit" (click)="onLogout()" class="btn btn-secondary">Log out</button>
             </li>
             <li class="nav-item ml-3" routerLinkActive="active">
-                <a class="nav-link" routerLink="/login"><span class="material-icons align-middle mr-1">
-                    add_circle_outline
-                    </span>Log In</a>
-            </li>
-
-            <!-- <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/supply"><span class="material-icons align-middle mr-1">
-                    view_module
-                    </span> Supply</a>
+                <button class="btn btn-success" routerLink="/supply/cord/nuevo">
+                <span class="material-icons align-middle">add</span>
+                Agregar
+           </button>
             </li>
             <li class="nav-item ml-3" routerLinkActive="active">
-                <a class="nav-link" routerLink="/new-cord"><span class="material-icons align-middle mr-1">
-                    add_circle_outline
-                    </span>New Cord</a>
-            </li> -->
+                <p style="color: white;">Hola </p>
+            </li>
         </ul>
-        <!-- <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form> -->
+        <form class="d-flex input-group w-auto">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" (keyup.enter)="searchCord(search.value)" #search>
+            <button class="btn btn-outline-primary" type="button" data-mdb-ripple-color="light" (click)="searchCord(search.value)">Search</button>
+        </form>
     </div>
 </nav>

@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../../services/firebase/login.service';
-
 
 @Component({
   selector: 'app-login',
@@ -10,13 +9,12 @@ import { LoginService } from '../../services/firebase/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  texto: any;
   condicional = false;
 
   /* formulario login */
   public loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+    email: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
   constructor(
@@ -26,27 +24,27 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLogin() {
-    console.log('Login', this.loginForm.value);
-    this.loginService.login( this.loginForm.value.email, this.loginForm.value.password).then( resp => {
-      if (resp !== undefined ) {
-        console.log('resp promise compo', resp);
-        this.texto = resp.message;
-        this.condicional = true;
-      } else {
-        this.condicional = false;
-      }
-    }).catch( error => {
-      console.error('promise', error);
-    });
+  get emailNoValid() {
+    return this.loginForm.controls['email'].invalid && this.loginForm.controls['email'].touched;
+  }
+  get passwordlNoValid() {
+    return this.loginForm.controls['password'].invalid && this.loginForm.controls['password'].touched;
   }
 
-  onLogout() {
-    this.loginService.logout().then( resp => {
-      console.log('logout ok');
+  onLogin() {
+    /* validacion de todos los campos en submit */
+    if (this.loginForm.invalid) {
+      return Object.values(this.loginForm.controls).forEach( control => {
+        control.markAsTouched();
+      });
+    }
+    this.loginService.login( this.loginForm.value.email, this.loginForm.value.password).then( resp => {
+      if (resp !== undefined ) { 
+        this.condicional = true;
+      }
     }).catch( error => {
-      console.error('error logout', error);
     });
+
   }
 
 }

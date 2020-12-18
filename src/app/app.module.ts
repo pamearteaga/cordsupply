@@ -27,6 +27,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 /* guards */
 import { LoggedGuard } from './guards/logged.guard';
+import { SearchComponent } from './components/search/search.component';
+import { FormComponent } from './components/form/form.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { LoggedGuard } from './guards/logged.guard';
     RegisterComponent,
     CordsComponent,
     CordComponent,
-    NewCordComponent
+    NewCordComponent,
+    SearchComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,

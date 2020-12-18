@@ -1,4 +1,3 @@
-import { useAnimation } from '@angular/animations';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from '../../interfaces/user';
@@ -23,16 +22,16 @@ export class FirestoreService {
       return error;
     }
   }
-
+//Modifiqué para usar el nombre
   getUser(uid: string) {
     try {
       this.angularFirestore.firestore.collection('users').where('uid', '==', uid).get().then( resp => {
         resp.forEach( usuarios => {
-          console.log('getUser usuarios', usuarios.data());
+          console.log('nombre usuario', usuarios.data().name);
         });
       });
     } catch (error) {
-      console.log('error firestore getUser', error);
+      console.log('error firestore', error);
     }
   }
 

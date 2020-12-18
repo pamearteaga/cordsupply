@@ -1,0 +1,29 @@
+<div class="container">
+    <h1 class="my-4">Resultado</h1>
+    <!--hilos-->
+    <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3" *ngIf="finds.length == 0">
+        <div class="alert alert-danger" role="alert">
+            No se encontraron resultados
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3" *ngIf="finds.length > 0">
+        <div class="col mb-4" *ngFor="let find of finds; let i = index">
+            <div class="card">
+                <div class="card-img-top" [ngStyle]="{'background-color': find.color}">
+                    <img src="./../../../assets/img/linha.jpg" class="card-img-top">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ find.codigo | uppercase }} </h5>
+                    <p class="card-text">{{ find.cantidad }} mts</p>
+                    <p class="card-text">{{ find.marca }}</p>
+                    <div class="tools">
+                        <a [routerLink]="['/supply/cord/', find.id]" class="badge badge-pill badge-info mr-2"><span class="material-icons">edit</span></a>
+                        <a href="javascript:void(0);" (click)="deleteCord(find, i)" class="badge badge-pill badge-danger"><span class="material-icons">delete</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

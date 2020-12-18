@@ -1,30 +1,25 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
- /*  errorLogin: boolean;
-  messageError: string; */
-
-
   constructor(
-    private angularFireAuth: AngularFireAuth
+    private angularFireAuth: AngularFireAuth,
+    private router: Router
   ) { }
 
   async login( email: string, password: string ) {
     try {
-      const respuesta = await this.angularFireAuth.auth.signInWithEmailAndPassword( email, password );
-      console.log('auth -->', respuesta);
-      /* return respuesta.user.uid; */
-      /* this.errorLogin = false; */
+      await this.angularFireAuth.auth.signInWithEmailAndPassword( email, password ).then( resp => {
+        this.router.navigate(['/supply']);
+      });
     } catch (error) {
-      console.error('auth -->', error.message);
       return error;
-      /* this.errorLogin = true;
-      this.messageError = error.message; */
     }
   }
 
@@ -35,9 +30,10 @@ export class LoginService {
     }
   }
 
+//Modifique para pbtener el email del usuario
  async currentUser() {
     try {
-      const currentUser = this.angularFireAuth.auth.currentUser;
+      const currentUser = this.angularFireAuth.auth.currentUser.email;
       return currentUser;
     } catch (error) {
       return error;

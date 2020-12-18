@@ -1,30 +1,20 @@
 <div class="container">
-    <h1 class="my-4">Listado de hilos</h1>
-    <!--agregar hilo-->
-    <div class="row mb-5">
-        <div class="col text-right">
-            <button class="btn btn-success" routerLink="/supply/newcord">
-            <span class="material-icons align-middle">add</span>
-                Agregar
-        </button>
-        </div>
-    </div>
-
+    <h1 class="mt-4 mb-5">Listado de hilos</h1>
     <!--hilos-->
-    <div *ngIf="!download && cords.length > 0" class="row row-cols-1 row-cols-lg-4 row-cols-md-3">
+    <div *ngIf="!download && cords.length > 0" class="row row-cols-1 row-cols-xl-5 row-cols-lg-4 row-cols-md-3">
         <div class="col mb-4" *ngFor="let cord of cords; let i = index">
             <div class="card">
                 <div class="card-img-top" [ngStyle]="{'background-color': cord.color}">
-                    <div class="tools">
-                        <a [routerLink]="['/supply/cord/', cord.id]" class="badge badge-pill badge-info mr-2"><span class="material-icons">edit</span></a>
-                        <a href="#" (click)="deleteCord(cord, i)" class="badge badge-pill badge-danger"><span class="material-icons">delete</span></a>
-                    </div>
                     <img src="./../../../assets/img/linha.jpg" class="card-img-top">
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title"> {{ cord.codigo }} </h5>
-                    <p class="card-text">Cantidad: {{ cord.cantidad }} mts</p>
-                    <p class="card-text">Marca: {{ cord.marca }}</p>
+                    <h5 class="card-title"> {{ cord.codigo | uppercase }} </h5>
+                    <p class="card-text">{{ cord.cantidad }} mts</p>
+                    <p class="card-text">{{ cord.marca }}</p>
+                    <div class="tools">
+                        <a [routerLink]="['/supply/cord/', cord.id]" class="badge badge-pill badge-info mr-2"><span class="material-icons">edit</span></a>
+                        <a href="javascript:void(0);" (click)="deleteCord(cord, i)" class="badge badge-pill badge-danger"><span class="material-icons">delete</span></a>
+                    </div>
                 </div>
             </div>
         </div>
