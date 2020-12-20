@@ -13,6 +13,7 @@ export class CordsComponent implements OnInit {
   cords: CordModel[] = [];
   download = false;
 
+
   constructor(
     private cordsService: CordsService
   ) { }
@@ -20,21 +21,12 @@ export class CordsComponent implements OnInit {
   ngOnInit() {
     this.download = true;
     this.cordsService.getCords().subscribe( resp => {
-      this.cords = resp;
+      this.cords = resp.reverse();
       this.download = false;
       if( resp.length === 0 ){
         this.download = false;
       }
     });
   }
-
-  deleteCord( cord: CordModel, i: number ) {
-    this.cords.splice(i, 1);
-    this.cordsService.deleteCord( cord.id ).subscribe();
-  }
-
-
-
- 
 
 }

@@ -14,6 +14,8 @@ export class SearchComponent implements OnInit {
   cords: CordModel[] = [];
   finds: CordModel[] = [];
   term: string = '';
+  download = false;
+  
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -22,18 +24,24 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.download = true;
     this.activateRoute.params.subscribe( params => {
       this.finds = [];
-      this.term = params['term'];
+      this.term = params['term'].toLowerCase();
       this.cordsService.getCords().subscribe( resp => {
         this.cords = resp;
         for(  let cord of this.cords ) {
           const codigo = cord.codigo.toLowerCase();
            if ( codigo === this.term ) {
             this.finds.push( cord );
+            this.download = false
           }
         }
+        if ( this.finds.length === 0) {
+          this.download = false;
+        }
       });
+
     })
   }
 

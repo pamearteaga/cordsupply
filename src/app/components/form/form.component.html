@@ -2,15 +2,15 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-4 col-lg-5 col-md-7 col-11 mx-auto mt-5 p-4 shadow-3-strong bg-light">
-                <h1 class="text-center mb-4"><strong>Cordsupply</strong></h1>
-                <ul class="nav nav-pills nav-justified" id="ex1" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link px-1" href="" routerLinkActive="active" routerLink="/form/login">Iniciar Sesión</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link mr-0 px-1" href="" routerLinkActive="active" routerLink="/form/register">Registrarse</a>
-                    </li>
-                </ul>
+                <h1 class="text-center mb-4 logo"><strong>Cordsupply</strong></h1>
+                <div class="btn-group shadow-0 w-100" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-link" routerLinkActive="active" routerLink="/form/login">
+                        Iniciar Sesión
+                    </button>
+                    <button type="button" class="btn btn-link" routerLinkActive="active" routerLink="/form/register">
+                        Crear Cuenta
+                    </button>
+                </div>
                 <hr class="my-4">
                 <router-outlet></router-outlet>
             </div>

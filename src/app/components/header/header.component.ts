@@ -31,6 +31,7 @@ export class HeaderComponent implements OnInit {
 
   searchCord( term: string ) {
     this.router.navigate( ['supply/search', term] )
+    
   }
 
   onLogout() {

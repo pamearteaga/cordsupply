@@ -39,21 +39,18 @@ export class CordComponent implements OnInit {
 
   saveCord(form: NgForm) {
     if (form.invalid) {
-      console.error('campo requerido');
       return; 
     }
     if (this.cord.id) {
       this.cordsService.updateCord(this.cord).subscribe( resp => {
-        console.log(resp);
         this.add = false;
         this.update = true;
         this.router.navigate( ['/supply'] );
       });
     } else {
       this.cordsService.newCord(this.cord).subscribe( resp => {
-        console.log(resp);
         this.add = true;
-        this.update = false;
+        this.update = false; 
         this.cord = resp;
         this.router.navigate( ['/supply'] );
       });

@@ -1,27 +1,28 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 mb-5">
-    <a class="navbar-brand mr-5" href="#" style="color:lavender;">CordSupply</a>
+<nav class="navbar navbar-expand-lg fixed-top navbar-light back-color shadow-3">
+    <a class="navbar-brand mr-5 ml-3" href="#">Cordsupply</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+        <span class="material-icons">
+            menu
+            </span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item ml-3" routerLinkActive="active">
-                <button type="submit" (click)="onLogout()" class="btn btn-secondary">Log out</button>
+            <li class="nav-item mx-3">
+                <a class="nav-link" href="#" routerLinkActive="active" routerLink="/supply/cords"> <span class="material-icons align-middle mr-2">view_module</span>Listado de hilos</a>
             </li>
-            <li class="nav-item ml-3" routerLinkActive="active">
-                <button class="btn btn-success" routerLink="/supply/cord/nuevo">
-                <span class="material-icons align-middle">add</span>
-                Agregar
-           </button>
+            <li class="nav-item mx-3">
+                <a class="nav-link" href="#" routerLinkActive="active" routerLink="/supply/cord/nuevo"><span class="material-icons align-middle mr-1"> add_circle</span> Agregar hilo</a>
             </li>
-            <li class="nav-item ml-3" routerLinkActive="active">
-                <p style="color: white;">Hola </p>
+            <li class="nav-item mx-3" routerLinkActive="active">
+                <form class="search d-flex input-group w-auto align-items-center">
+                    <span class="material-icons mr-1">search</span>
+                    <input class="mr-sm-2" type="text" placeholder="Buscar..." (keyup.enter)="searchCord(search.value)" #search>
+                </form>
             </li>
         </ul>
-        <form class="d-flex input-group w-auto">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" (keyup.enter)="searchCord(search.value)" #search>
-            <button class="btn btn-outline-primary" type="button" data-mdb-ripple-color="light" (click)="searchCord(search.value)">Search</button>
-        </form>
+        <button type="button" class="btn btn-outline-dark log-out-button" (click)="onLogout()" data-mdb-ripple-color="dark">
+            Cerrar sesión
+          </button>
     </div>
 </nav>

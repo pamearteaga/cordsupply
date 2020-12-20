@@ -20,6 +20,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CordsComponent } from './components/cords/cords.component';
 import { CordComponent } from './components/cord/cord.component';
+import { SearchComponent } from './components/search/search.component';
+import { FormComponent } from './components/form/form.component';
+import { CardComponent } from './components/card/card.component';
 import { NewCordComponent } from './components/new-cord/new-cord.component';
 
 /* formularios */
@@ -27,8 +30,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 /* guards */
 import { LoggedGuard } from './guards/logged.guard';
-import { SearchComponent } from './components/search/search.component';
-import { FormComponent } from './components/form/form.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 
 @NgModule({
@@ -42,7 +46,9 @@ import { FormComponent } from './components/form/form.component';
     CordComponent,
     NewCordComponent,
     SearchComponent,
-    FormComponent
+    FormComponent,
+    CardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,8 @@ import { FormComponent } from './components/form/form.component';
     AngularFirestoreModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
   providers: [LoggedGuard],
   bootstrap: [AppComponent]

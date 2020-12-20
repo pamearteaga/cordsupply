@@ -1,0 +1,32 @@
+<div class="row row-cols-1 row-cols-xl-5 row-cols-lg-4 row-cols-md-3 animated fadeIn fast">
+    <div class="col mb-4" *ngFor="let cord of cords; let i = index">
+        <div class="card">
+            <div class="card-img-top" [ngStyle]="{'background-color': cord.color}">
+                <img src="./../../../assets/img/linha.jpg">
+            </div>
+            <div class="card-body">
+                <h4 class="card-title mb-1"><strong> {{ cord.codigo | uppercase }} </strong></h4>
+                <p class="card-text">{{ cord.cantidad }} mts &nbsp;<strong>|</strong>&nbsp; {{ cord.marca }}</p>
+                <div class="tools">
+                    <button type="button" class="btn btn-outline-info btn-floating mr-2" [routerLink]="['/supply/cord/', cord.id]">
+                        <span class="material-icons mt-1" style="font-size: 22px;">edit</span>
+                      </button>
+                    <button type="button" class="btn btn-outline-danger btn-floating" (click)="openModal(template)">
+                        <span class="material-icons mt-1" style="font-size: 22px;">delete</span>
+                      </button>
+                </div>
+            </div>
+        </div>
+        <ng-template #template>
+            <div class="modal-header d-flex justify-content-end pb-0">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body pt-0">
+                <h5 class="text-center mb-4 d-block">¿Deseas borrar este hilo?</h5>
+                <button class="btn btn-outline-danger mb-2 d-block mx-auto" (click)="deleteCord(cord, i); modalRef.hide();"> Borrar</button>
+            </div>
+        </ng-template>
+    </div>
+</div>
