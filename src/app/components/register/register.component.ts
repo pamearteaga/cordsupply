@@ -59,13 +59,15 @@ export class RegisterComponent implements OnInit {
         control.markAsTouched();
       });
     }
-    this.registerService.registerByUserEmail( this.registerForm.value.email, this.registerForm.value.password ).then( resp => {
+    /* datos de usuario nuevo */
+    this.registerService.registerByUserEmail( this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.name );
+    /* .then( resp => {
       const newRegister: User = {
-        email: resp.email,
-        emailVerified: resp.emailVerified,
+        email: this.registerForm.value.email,
+        emailVerified: false,
         name: this.registerForm.value.name,
         lastname: this.registerForm.value.lastname,
-        phoneNumber: resp.phoneNumber,
+        phoneNumber: '',
         uid: resp.uid
       };
       this.firestoreService.createUser(newRegister).then( resp => {
@@ -77,6 +79,6 @@ export class RegisterComponent implements OnInit {
     }).catch( error => {
       console.error('register fail', error);
       this.condicional = true;
-    });
+    }); */
   }
 }

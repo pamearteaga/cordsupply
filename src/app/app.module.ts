@@ -23,14 +23,16 @@ import { CordComponent } from './components/cord/cord.component';
 import { SearchComponent } from './components/search/search.component';
 import { FormComponent } from './components/form/form.component';
 import { CardComponent } from './components/card/card.component';
-import { NewCordComponent } from './components/new-cord/new-cord.component';
+import { FooterComponent } from './components/footer/footer.component';
+
 
 /* formularios */
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 /* guards */
 import { LoggedGuard } from './guards/logged.guard';
-import { FooterComponent } from './components/footer/footer.component';
+
+/* modal */
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 
@@ -44,7 +46,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     RegisterComponent,
     CordsComponent,
     CordComponent,
-    NewCordComponent,
     SearchComponent,
     FormComponent,
     CardComponent,

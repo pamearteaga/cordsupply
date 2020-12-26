@@ -23,16 +23,13 @@ export class LoggedGuard implements CanActivate {
         if ( resp.uid != null ) {
           this.logged = true;
         } else {
-          window.alert('protected route');
           this.logged = false;
-          this.router.navigate(['login']);
+          this.router.navigate(['form']);  
         }
         return this.logged;
       }).catch (error => {
-        console.log('error promise guard', error);
         this.logged = false;
-        window.alert('protected route');
-        this.router.navigate(['login']);
+        this.router.navigate(['form']);
         return this.logged;
       });
       return this.logged;

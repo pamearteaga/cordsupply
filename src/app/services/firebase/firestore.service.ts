@@ -27,11 +27,11 @@ export class FirestoreService {
     try {
       this.angularFirestore.firestore.collection('users').where('uid', '==', uid).get().then( resp => {
         resp.forEach( usuarios => {
-          console.log('nombre usuario', usuarios.data().name);
-        });
+/*            console.log('nombre usuario', usuarios.data().name, usuarios.data().lastname);
+ */        });
       });
     } catch (error) {
-      console.log('error firestore', error);
+      /* console.log('error firestore', error); */
     }
   }
 

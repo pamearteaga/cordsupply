@@ -101,6 +101,7 @@ h1.logo {
     input:focus {
         border-bottom: 2px solid #4f4f4f;
         outline: none !important;
+        background: rgba(255, 255, 255, .3);
     }
     span {
         color: #4f4f4f;
@@ -142,6 +143,20 @@ select {
     border-bottom: none !important;
 }
 
+.username {
+    color: #5aafb8 !important;
+    font-weight: 600 !important;
+}
+
+.username.desktop {
+    display: block;
+    margin: 0 1.2rem 0 0;
+}
+
+.username.responsive {
+    display: none;
+}
+
 @media screen and (max-width: 991px) {
     .background {
         padding: 0;
@@ -162,6 +177,9 @@ select {
         padding: .5rem 1rem .5rem;
         border-bottom: 1px solid rgba(0, 0, 0, .1);
     }
+    .nav-item:first-child .nav-link {
+        border-top: 1px solid rgba(0, 0, 0, .1);
+    }
     .nav-item form {
         margin-top: 1rem;
     }
@@ -178,6 +196,15 @@ select {
         input {
             width: 90%;
         }
+    }
+    .username.responsive {
+        width: 100%;
+        margin: 1rem 1rem;
+        display: block;
+        font-size: 20px;
+    }
+    .username.desktop {
+        display: none;
     }
 }
 

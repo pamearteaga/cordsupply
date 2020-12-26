@@ -7,6 +7,12 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="username responsive">
+            <p class="mb-0">
+                <span class="material-icons align-middle">
+                sentiment_satisfied_alt
+                </span> Hola {{ userLog }}</p>
+        </div>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item mx-3">
                 <a class="nav-link" href="#" routerLinkActive="active" routerLink="/supply/cords"> <span class="material-icons align-middle mr-2">view_module</span>Listado de hilos</a>
@@ -14,13 +20,19 @@
             <li class="nav-item mx-3">
                 <a class="nav-link" href="#" routerLinkActive="active" routerLink="/supply/cord/nuevo"><span class="material-icons align-middle mr-1"> add_circle</span> Agregar hilo</a>
             </li>
-            <li class="nav-item mx-3" routerLinkActive="active">
+            <li class="nav-item mx-3 pt-1" routerLinkActive="active">
                 <form class="search d-flex input-group w-auto align-items-center">
                     <span class="material-icons mr-1">search</span>
                     <input class="mr-sm-2" type="text" placeholder="Buscar..." (keyup.enter)="searchCord(search.value)" #search>
                 </form>
             </li>
         </ul>
+        <div class="username desktop">
+            <p class="mb-0">
+                <span class="material-icons align-middle">
+                sentiment_satisfied_alt
+                </span> Hola {{ userLog }}</p>
+        </div>
         <button type="button" class="btn btn-outline-dark log-out-button" (click)="onLogout()" data-mdb-ripple-color="dark">
             Cerrar sesión
           </button>

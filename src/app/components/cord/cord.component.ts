@@ -26,7 +26,6 @@ export class CordComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.codigoHilo = id;
-
     if(id !== 'nuevo') {
       this.cordsService.getCord( id ).subscribe( (resp: CordModel) => {
         this.cord = resp;

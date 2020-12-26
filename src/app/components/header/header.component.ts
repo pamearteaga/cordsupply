@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FirestoreService } from '../../services/firebase/firestore.service';
 import { LoginService } from '../../services/firebase/login.service';
 
 
@@ -15,19 +14,15 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private firestoreService: FirestoreService,
     private loginService: LoginService
   ) { }
 
   ngOnInit() {
-    this.loginService.currentUser().then( resp => {
-      this.userLog = resp;
-      /* console.log(this.userLog) */
-      /* const loggedUser = this.firestoreService.getUser(userUid);
-      console.log(loggedUser) */
+    this.loginService.userName().then( resp => {
+      this.userLog = resp; 
     });
-
   }
+
 
   searchCord( term: string ) {
     this.router.navigate( ['supply/search', term] )

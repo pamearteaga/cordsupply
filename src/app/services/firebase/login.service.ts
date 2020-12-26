@@ -19,7 +19,7 @@ export class LoginService {
         this.router.navigate(['/supply']);
       });
     } catch (error) {
-      return error;
+      /* return error; */
     }
   }
 
@@ -30,14 +30,21 @@ export class LoginService {
     }
   }
 
-//Modifique para pbtener el email del usuario
  async currentUser() {
     try {
-      const currentUser = this.angularFireAuth.auth.currentUser.email;
-      return currentUser;
+      const currentUser = this.angularFireAuth.auth.currentUser;
+        return currentUser;
     } catch (error) {
-      return error;
     }
   }
+  /* Envia de respuesta el nombre del usuario que se agregó al momento de crearlo */
+ async userName() {
+  try {
+    const userName = this.angularFireAuth.auth.currentUser.displayName;
+      return userName;
+  } catch (error) {
+    return '';
+  }
+}
 
 }

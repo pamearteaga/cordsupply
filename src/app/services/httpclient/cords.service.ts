@@ -57,7 +57,7 @@ export class CordsService {
     return this.httpClient.get(`${this.url}/cords.json`)
       .pipe(
         map(this.arreglo),
-        delay(2000)
+        delay(1500)
       );
   }
 
