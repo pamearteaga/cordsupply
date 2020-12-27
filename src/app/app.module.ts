@@ -9,6 +9,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+/* guards firebase*/
+import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
+
 
 /* HttpClient*/
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -57,6 +60,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireAuthGuardModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,

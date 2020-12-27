@@ -21,8 +21,10 @@ export class RegisterService {
           displayName: name
         });   
         this.router.navigate(['/supply']);
+        return respuestaReg;
       });
     } catch (error) { 
+      return error;
     }
   }
 

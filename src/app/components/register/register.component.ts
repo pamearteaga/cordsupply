@@ -60,8 +60,7 @@ export class RegisterComponent implements OnInit {
       });
     }
     /* datos de usuario nuevo */
-    this.registerService.registerByUserEmail( this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.name );
-    /* .then( resp => {
+    this.registerService.registerByUserEmail( this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.name ).then( resp => {
       const newRegister: User = {
         email: this.registerForm.value.email,
         emailVerified: false,
@@ -71,14 +70,15 @@ export class RegisterComponent implements OnInit {
         uid: resp.uid
       };
       this.firestoreService.createUser(newRegister).then( resp => {
-        this.router.navigate(['/supply']);
         if ( resp !== 'auth/email-already-in-use') {
+          this.condicional = true;
+        } else {
           this.router.navigate(['/supply']);
-        } 
+        }
       });
     }).catch( error => {
-      console.error('register fail', error);
+      /* return error; */
       this.condicional = true;
-    }); */
+    });
   }
 }

@@ -19,7 +19,7 @@ export class LoginService {
         this.router.navigate(['/supply']);
       });
     } catch (error) {
-      /* return error; */
+      return error;
     }
   }
 
