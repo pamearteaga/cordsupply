@@ -1,5 +1,17 @@
 <div class="container">
-    <h1 class="mb-5" style="margin-top: 100px;">Listado de hilos</h1>
+    <div class="row" style="margin-top: 130px;">
+        <div class="col-6">
+            <h1 class="mb-5">Tablero</h1>
+        </div>
+        <div class="col-6">
+            <button type="button" class="btn btn-outline-info" style="float: right;" routerLinkActive="active" routerLink="/supply/cord/nuevo" data-mdb-ripple-color="dark">
+            <span class="material-icons align-middle">
+                add
+                </span>
+        Agregar hilo
+      </button>
+        </div>
+    </div>
     <!--hilos-->
     <div *ngIf="!download && cords.length > 0">
         <app-card [cords]="cords"></app-card>
