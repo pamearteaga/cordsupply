@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Deploy
 
-(https://pamearteaga.github.io/cordsupply/cordsupply#/form/login)
+[pamearteaga.github.io/cordsupply/cordsupply#/form/login](https://pamearteaga.github.io/cordsupply/cordsupply#/form/login)
 
 ## Development server
 
