@@ -8,6 +8,8 @@ import { CordComponent } from './components/cord/cord.component';
 /* import { LoggedGuard } from './guards/logged.guard'; */
 import { SearchComponent } from './components/search/search.component';
 import { FormComponent } from './components/form/form.component';
+
+/* Angular guards */
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['form']);
